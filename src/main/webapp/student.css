@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+.container {
+    width: 600px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.menu {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.menu button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.menu button:hover {
+    background: #0056b3;
+}
+
+.section {
+    display: none;
+    margin-top: 20px;
+}
+
+.section h2 {
+    color: #444;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input[type="text"] {
+    padding: 8px;
+    margin: 8px 0;
+}
+
+form input[type="submit"] {
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+form input[type="submit"]:hover {
+    background: darkgreen;
+}
