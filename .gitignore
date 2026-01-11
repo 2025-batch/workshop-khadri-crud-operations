@@ -6,3 +6,4 @@ target/
 .mvn/
 build/classes
 /build/
+/bin/

@@ -18,7 +18,7 @@ public class StudentDao {
 		Connection con = DBConnection.getConnection();
 
 		try (PreparedStatement ps = con
-				.prepareStatement("INSERT INTO student(id, name, course) VALUES (?, ?, ?)")) {
+				.prepareStatement("INSERT INTO student(std_id, std_name, course) VALUES (?, ?, ?)")) {
 
 			ps.setInt(1, form.getStdId());
 			ps.setString(2, form.getStdName());
@@ -37,7 +37,7 @@ public class StudentDao {
 		Connection con = DBConnection.getConnection();
 		
 		try (PreparedStatement ps = con
-				.prepareStatement("SELECT * FROM STUDENT WHERE ID=?")) {
+				.prepareStatement("SELECT * FROM STUDENT WHERE std_id=?")) {
 			
 			ps.setInt(1, id); 
 			
@@ -80,6 +80,39 @@ public class StudentDao {
 		}
 		return resultList;
 		
+	}
+	public int updateStudent(StudentForm form) {
+
+		int count = 0;
+		Connection con = DBConnection.getConnection();
+
+		try (PreparedStatement ps = con.prepareStatement(
+				"UPDATE student SET std_name=?, course=? WHERE std_id=?")) {
+
+			ps.setString(1, form.getStdName());
+			ps.setString(2, form.getStdCourse());
+			ps.setInt(3, form.getStdId());
+
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	public int deleteStudent(int id) {
+
+		int count = 0;
+		Connection con = DBConnection.getConnection();
+
+		try (PreparedStatement ps = con.prepareStatement(
+				"DELETE FROM STUDENT WHERE std_id=?")) {
+
+			ps.setInt(1, id);
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }

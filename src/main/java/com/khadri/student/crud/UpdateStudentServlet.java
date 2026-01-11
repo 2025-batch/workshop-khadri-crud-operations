@@ -11,26 +11,28 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "/add/student" })
-public class AddStudentServlet extends HttpServlet {
+@WebServlet("/update/student")
+public class UpdateStudentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
 		String course = req.getParameter("course");
-		
+
 		StudentForm form = new StudentForm();
 		form.setStdId(Integer.valueOf(id));
 		form.setStdName(name);
 		form.setStdCourse(course);
 
 		StudentDao dao = new StudentDao();
-		int count = dao.addStudent(form);
+		int count = dao.updateStudent(form);
 		
-		 resp.getWriter().print(count);
+		resp.getWriter().print(count);
 	}
 }
+
